@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { BiSolidCheckboxChecked, BiCheckbox } from "react-icons/bi";
 import DisplayAds from "../components/DisplayAds";
 import parse from "html-react-parser";
+import { BiSolidBulb } from "react-icons/bi";
 
 const ExamHead = styled.div`
   margin-bottom: 3rem;
@@ -25,12 +26,48 @@ const List = styled.div`
   }
 `;
 
+const ListItem = styled.div`
+  position: relative;
+  transition: background-color 0.3s ease, border 0.3s ease;
+
+  ${({ active }) =>
+    active &&
+    `
+    padding: 1rem;
+    background-color: #f0f8ff;
+    border: 1px solid #007bff;
+    border-radius: 8px;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 0;
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      border: 8px solid red;
+      border-radius: 50%;
+    }
+  `}
+`;
+
 const Utility = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 3rem;
+`;
+
+const Score = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.5rem;
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: 30px;
 `;
 
 const CheckboxContainer = styled.div`
@@ -38,8 +75,6 @@ const CheckboxContainer = styled.div`
   gap: 1rem;
   align-items: center;
 `;
-
-const CustomCheckboxWrapper = styled.div``;
 
 const Label = styled.label`
   font-size: 1.1rem;
@@ -51,15 +86,22 @@ const Label = styled.label`
   svg {
     font-size: 2rem;
   }
+
+  ${({ disabled }) =>
+    disabled &&
+    `
+    color: #999;
+    cursor: not-allowed;
+
+    svg {
+      color: #999;
+    }
+  `}
 `;
 
 const CustomCheckboxInput = styled.input`
   display: none;
 `;
-
-const CustomCheckbox = styled.span``;
-
-const ListItem = styled.div``;
 
 const Question = styled.div`
   margin-bottom: 1.2rem;
@@ -80,7 +122,6 @@ const View = styled.div`
     position: absolute;
     top: -10px;
     left: 10px;
-    display: inline-block;
     padding: 0.2rem 0.8rem;
     background-color: #eaeaea;
     font-size: 0.8rem;
@@ -90,7 +131,7 @@ const View = styled.div`
 
 const ViewImg = styled.img`
   margin-bottom: 1.5rem;
-  aspect-radio: 1 / 1;
+  aspect-ratio: 1 / 1;
   border: 1px solid #eaeaea;
   border-radius: 4px;
 `;
@@ -112,145 +153,214 @@ const Explanation = styled.div`
 const Exam = () => {
   const [showAnswer, setShowAnswer] = useState(false);
   const [showOnlyAnswer, setShowOnlyAnswer] = useState(false);
+  const [showWrongAnswer, setShowWrongAnswer] = useState(false);
   const [questions, setQuestions] = useState();
   const [answers, setAnswers] = useState();
   const [metadata, setMetadata] = useState();
-  const { round } = useParams();
+  const [selectedAnswers, setSelectedAnswers] = useState({});
+  const { type, round } = useParams();
+  const [score, setScore] = useState(0);
+
+  // 숫자 키와 해당하는 동그라미 번호 문자를 매핑
+  const circleNum = { 1: "①", 2: "②", 3: "③", 4: "④", 5: "⑤" };
+
+  // 특정 URL에서 데이터를 가져와서 상태 업데이트
+  const fetchData = async (url, setState) => {
+    const response = await fetch(url);
+    const data = await response.json();
+    setState(data);
+  };
+
+  // 체크박스 리스트를 정의하는 배열
+  const CheckboxList = [
+    {
+      id: "showAnswer",
+      state: showAnswer,
+      setState: setShowAnswer,
+      label: "정답 보기",
+    },
+    {
+      id: "showOnlyAnswer",
+      state: showOnlyAnswer,
+      setState: setShowOnlyAnswer,
+      label: "정답 문항만 보기",
+    },
+    {
+      id: "showWrongAnswer",
+      state: showWrongAnswer,
+      setState: setShowWrongAnswer,
+      label: "틀린 문제만 보기",
+    },
+  ];
 
   useEffect(() => {
-    fetch(`${process.env.PUBLIC_URL}/data/2023/${round}/questions.json`, {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setQuestions(data);
+    const baseUrl = `${process.env.PUBLIC_URL}/data/${type}/${round}`;
+
+    fetchData(`${baseUrl}/questions.json`, setQuestions);
+    fetchData(`${baseUrl}/answers.json`, setAnswers);
+    fetchData(`${baseUrl}/metadata.json`, setMetadata);
+  }, [type, round]);
+
+  // 옵션 선택 이벤트
+  const handleOptionChange = (questionId, value) => {
+    setSelectedAnswers((prev) => {
+      const newAnswers = { ...prev, [questionId]: value };
+
+      let newScore = 0;
+
+      questions.forEach((q) => {
+        const answer = answers.find((a) => a.questionId === q.id);
+        if (newAnswers[q.id] === answer?.answer) {
+          newScore++;
+        }
       });
 
-    fetch(`${process.env.PUBLIC_URL}/data/2023/${round}/answers.json`, {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setAnswers(data);
-      });
+      setScore(newScore);
 
-    fetch(`${process.env.PUBLIC_URL}/data/2023/${round}/metadata.json`, {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setMetadata(data);
-      });
-  }, [round]);
+      return newAnswers;
+    });
+  };
 
+
+  // 질문(q)과 정답(answer)을 기반으로 선택지와 스타일을 렌더링
+  const renderAnswers = (q, answer) => {
+    return q.options.map((option, index) => {
+      const isCorrect = answer?.answer === index + 1;
+      const isSelected = selectedAnswers[q.id] === index + 1;
+      if (showOnlyAnswer && !isCorrect) return null;
+
+      return (
+        <li key={index}>
+          <label
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "0.5rem",
+              cursor: "pointer",
+              color: isSelected
+                ? "red"
+                : isCorrect && showAnswer
+                ? "green"
+                : "black",
+            }}
+          >
+            <input
+              type="radio"
+              name={`question-${q.id}`}
+              value={index + 1}
+              onChange={() => handleOptionChange(q.id, index + 1)}
+              style={{ marginRight: "0.5rem" }}
+            />
+            {circleNum[index + 1]} {option}
+          </label>
+        </li>
+      );
+    });
+  };
+
+  // 필요한 데이터가 아직 로드되지 않은 경우 로딩 메시지 표시
   if (!metadata || !questions || !answers) return <p>Loading...</p>;
 
-  const handleShowAnswer = () => {
-    setShowAnswer(!showAnswer);
-  };
-
-  const handleShowOnlyAnswer = () => {
-    setShowOnlyAnswer(!showOnlyAnswer);
-  };
   return (
     <>
+      {/* 시험 정보 */}
       <ExamHead>
         <ExamTitle>{metadata.title}</ExamTitle>
         <div>{metadata.date}</div>
       </ExamHead>
 
+      {/* 광고 */}
       <DisplayAds />
 
+      {/* 유틸리티 */}
       <Utility>
-        <CheckboxContainer>
-          <CustomCheckboxWrapper>
-            <CustomCheckboxInput
-              type="checkbox"
-              id="showAnswer"
-              checked={showAnswer}
-              onChange={handleShowAnswer}
-            />
-            <Label htmlFor="showAnswer">
-              {showAnswer ? <BiSolidCheckboxChecked /> : <BiCheckbox />}
-              <CustomCheckbox checked={showAnswer} />
-              정답 보기
-            </Label>
-          </CustomCheckboxWrapper>
+        <Score>
+          <BiSolidBulb /> 정답 {score}
+        </Score>
 
-          <CustomCheckboxWrapper>
-            <CustomCheckboxInput
-              type="checkbox"
-              id="showOnlyAnswer"
-              checked={showOnlyAnswer}
-              onChange={handleShowOnlyAnswer}
-            />
-            <Label htmlFor="showOnlyAnswer">
-              {showOnlyAnswer ? <BiSolidCheckboxChecked /> : <BiCheckbox />}
-              <CustomCheckbox checked={showOnlyAnswer} />
-              정답 문항만 보기
-            </Label>
-          </CustomCheckboxWrapper>
+        <CheckboxContainer>
+          {CheckboxList.map(({ id, state, setState, label }) => (
+            <div key={id}>
+              <CustomCheckboxInput
+                type="checkbox"
+                id={id}
+                checked={state}
+                disabled={
+                  (id === "showWrongAnswer" && showOnlyAnswer) ||
+                  (id === "showOnlyAnswer" && showWrongAnswer)
+                }
+                onChange={() => setState(!state)}
+              />
+              <Label
+                htmlFor={id}
+                disabled={
+                  (id === "showWrongAnswer" && showOnlyAnswer) ||
+                  (id === "showOnlyAnswer" && showWrongAnswer)
+                }
+              >
+                {state ? <BiSolidCheckboxChecked /> : <BiCheckbox />}
+                {label}
+              </Label>
+            </div>
+          ))}
         </CheckboxContainer>
       </Utility>
 
+      {/* 문항 목록 */}
       <List>
-        {questions.map((q) => {
-          const answer = answers.find((a) => a.questionId === q.id);
-          const viewContent = typeof q.view === "string" ? q.view : "";
+        {questions
+          .filter((q) => {
+            // '틀린 문제만 보기'가 활성화된 경우, 답이 틀린 문제만 노출
+            if (showWrongAnswer) {
+              const answer = answers.find((a) => a.questionId === q.id);
+              return selectedAnswers[q.id] !== answer?.answer;
+            }
 
-          return (
-            <ListItem key={q.id}>
-              <Question>
-                {q.id}. {q.question}
-              </Question>
+            return true; // '틀린 문제만 보기'가 비활성화된 경우 모든 문제를 표시
+          })
+          .map((q) => {
+            const answer = answers.find((a) => a.questionId === q.id);
 
-              {viewContent && <View>{parse(viewContent)}</View>}
-              {q.viewImg && (
-                <ViewImg
-                  src={`${process.env.PUBLIC_URL}/images/adsp/2023/${round}/${q.viewImg}`}
-                  alt="Exam Image"
-                />
-              )}
+            // 현재 문항의 정답 여부 계산
+            const isCorrect = selectedAnswers[q.id] === answer?.answer;
 
-              <Answer>
-                {q.type === "single" &&
-                  q.options.map((option, index) => {
-                    const isCorrect = answer?.answer === index + 1;
+            return (
+              <ListItem key={q.id} active={isCorrect}>
+                {/* 문항 */}
+                <Question>
+                  {q.id}. {q.question}
+                </Question>
 
-                    if (showOnlyAnswer && !isCorrect) return null;
+                {/* 보기 */}
+                {q.view && <View>{parse(q.view)}</View>}
 
-                    return (
-                      <li
-                        key={index}
-                        style={{
-                          color:
-                            (showAnswer || showOnlyAnswer) && isCorrect
-                              ? "red"
-                              : "black",
-                        }}
-                      >
-                        {index + 1}. {option}
-                      </li>
-                    );
-                  })}
-
-                {q.type === "subjective" && answer && (showAnswer || showOnlyAnswer) && (
-                  <div
-                    style={{
-                      color: "red",
-                    }}
-                  >
-                    {parse(answer?.answer)}
-                  </div>
+                {/* 이미지 */}
+                {q.viewImg && (
+                  <ViewImg
+                    src={`${process.env.PUBLIC_URL}/images/${type}/${round}/${q.viewImg}`}
+                    alt="Exam Image"
+                  />
                 )}
-              </Answer>
 
-              {answer.explanation && (showAnswer || showOnlyAnswer) && (
-                <Explanation>{answer.explanation}</Explanation>
-              )}
-            </ListItem>
-          );
-        })}
+                {/* 객관식 */}
+                <Answer>
+                  {q.type === "single" && renderAnswers(q, answer)}
+                </Answer>
+
+                {/* 주관식 */}
+                {q.type === "subjective" &&
+                  answer &&
+                  (showAnswer || showOnlyAnswer) && (
+                    <div style={{ color: "red" }}>{parse(answer.answer)}</div>
+                  )}
+
+                {/* 해설 */}
+                {answer?.explanation && (showAnswer || showOnlyAnswer) && (
+                  <Explanation>{answer.explanation}</Explanation>
+                )}
+              </ListItem>
+            );
+          })}
       </List>
     </>
   );

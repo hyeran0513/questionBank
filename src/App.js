@@ -33,7 +33,7 @@ const App = () => {
             }
           />
           <Route
-            path="/exam/:round"
+            path="/exam/:type/:round"
             element={
               <MainLayout>
                 <Exam />

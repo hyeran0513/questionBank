@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { BiMehBlank } from "react-icons/bi";
+import { BiCrown, BiSolidBot } from "react-icons/bi";
 
 const HeaderWrapper = styled.header`
   height: 100px;
@@ -9,8 +9,8 @@ const HeaderWrapper = styled.header`
 `;
 
 const HeaderInner = styled.div`
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   margin: 0 auto;
   padding: 0 20px;
@@ -30,11 +30,20 @@ const Logo = styled(Link)`
   }
 `;
 
+const Message= styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: red;
+`;
+
 const Header = () => {
   return (
     <HeaderWrapper>
       <HeaderInner>
-        <Logo to="/"><BiMehBlank /> 문제은행</Logo>
+        <Logo to="/"><BiCrown /> 문제은행구리</Logo>
+        <Message><BiSolidBot /> 해당 사이트는 프론트엔드로만 구현되어 데이터가 서버에 저장되지 않습니다. 모든 데이터는 브라우저를 새로 고침하거나 페이지를 이동하면 삭제되며, 일회성으로만 사용 가능합니다.</Message>
       </HeaderInner>
     </HeaderWrapper>
   );

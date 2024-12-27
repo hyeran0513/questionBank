@@ -62,8 +62,10 @@ const Home = () => {
   const [selectedRound, setSelectedRound] = useState();
   const navigate = useNavigate();
 
-  const handleStartExam = () => {
-    navigate(`/exam/${selectedRound}`);
+  const handleStartExam = (type) => {
+    if (selectedRound) {
+      navigate(`/exam/${type}/${selectedRound}`);
+    }
   };
 
   return (
@@ -82,7 +84,11 @@ const Home = () => {
               <option value="round39">39회 기출문제</option>
             </StyledSelect>
 
-            <StyledButton type="button" onClick={handleStartExam} disabled={!selectedRound}>
+            <StyledButton
+              type="button"
+              onClick={() => handleStartExam("adsp")}
+              disabled={!selectedRound}
+            >
               <BiGame /> 문제 해설 보기
             </StyledButton>
           </Utility>
