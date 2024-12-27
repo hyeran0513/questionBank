@@ -12,7 +12,7 @@
   {
     "questionId": 3,
     "answer": 2,
-    "explanation": ""
+    "explanation": "빅데이터 시대의 가치 패러다임의 변화는 Digitalization, Connection, Agency 순서로 변화되었다."
   },
   {
     "questionId": 4,
@@ -32,6 +32,219 @@
   {
     "questionId": 7,
     "answer": 4,
+    "explanation": ""
+  },
+  {
+    "questionId": 8,
+    "answer": 3,
+    "explanation": ""
+  },
+  {
+    "questionId": 9,
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "questionId": 10,
+    "answer": 3,
+    "explanation": ""
+  },
+  {
+    "questionId": 11,
+    "answer": 3,
+    "explanation": ""
+  },
+  {
+    "questionId": 12,
+    "answer": 3,
+    "explanation": ""
+  },
+  {
+    "questionId": 13,
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "questionId": 14,
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "questionId": 15,
+    "answer": 4,
+    "explanation": ""
+  },
+  {
+    "questionId": 16,
+    "answer": 4,
+    "explanation": ""
+  },
+  {
+    "questionId": 17,
+    "answer": 4,
+    "explanation": ""
+  },{
+    "questionId": 18,
+    "answer": 3,
+    "explanation": ""
+  },
+  {
+    "questionId": 19,
+    "answer": 4,
+    "explanation": ""
+  },
+  {
+    "questionId": 20,
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "questionId": 21,
+    "answer": 4,
+    "explanation": ""
+  },
+  {
+    "questionId": 22,
+    "answer": 3,
+    "explanation": ""
+  },
+  {
+    "questionId": 23,
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "questionId": 24,
+    "answer": 4,
+    "explanation": ""
+  },
+  {
+    "questionId": 25,
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "questionId": 26,
+    "answer": 4,
+    "explanation": ""
+  },
+  {
+    "questionId": 27,
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "questionId": 28,
+    "answer": 4,
+    "explanation": ""
+  },
+  {
+    "questionId": 29,
+    "answer": 3,
+    "explanation": ""
+  },
+  {
+    "questionId": 30,
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "questionId": 31,
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "questionId": 32,
+    "answer": 4,
+    "explanation": ""
+  },{
+    "questionId": 33,
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "questionId": 34,
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "questionId": 35,
+    "answer": 4,
+    "explanation": ""
+  },
+  {
+    "questionId": 36,
+    "answer": 4,
+    "explanation": ""
+  },
+  {
+    "questionId": 37,
+    "answer": 3,
+    "explanation": ""
+  },
+  {
+    "questionId": 38,
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "questionId": 39,
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "questionId": 40,
+    "answer": 3,
+    "explanation": ""
+  },
+  {
+    "questionId": 41,
+    "answer": "(A): 인과관계, (b): 상관관계",
+    "explanation": ""
+  },
+  {
+    "questionId": 42,
+    "answer": "CRM",
+    "explanation": ""
+  },
+  {
+    "questionId": 43,
+    "answer": "나선형 모델",
+    "explanation": ""
+  },
+  {
+    "questionId": 44,
+    "answer": "상향식 접근 방법",
+    "explanation": ""
+  },
+  {
+    "questionId": 45,
+    "answer": "오즈(odds)",
+    "explanation": ""
+  },
+  {
+    "questionId": 46,
+    "answer": "점추정",
+    "explanation": ""
+  },
+  {
+    "questionId": 47,
+    "answer": "0.2",
+    "explanation": ""
+  },
+  {
+    "questionId": 48,
+    "answer": "0.4",
+    "explanation": ""
+  },
+  {
+    "questionId": 49,
+    "answer": "다차원 척도법",
+    "explanation": ""
+  },
+  {
+    "questionId": 50,
+    "answer": "계통추출법",
     "explanation": ""
   }
 ]
