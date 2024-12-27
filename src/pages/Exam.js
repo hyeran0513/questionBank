@@ -90,7 +90,7 @@ const Exam = () => {
   const { round } = useParams();
 
   useEffect(() => {
-    fetch(`/data/2023/${round}/questions.json`, {
+    fetch(`${process.env.PUBLIC_URL}/data/2023/${round}/questions.json`, {
       method: "GET",
     })
       .then((res) => res.json())
@@ -98,7 +98,7 @@ const Exam = () => {
         setQuestions(data);
       });
 
-    fetch(`/data/2023/${round}/answers.json`, {
+    fetch(`${process.env.PUBLIC_URL}/data/2023/${round}/answers.json`, {
       method: "GET",
     })
       .then((res) => res.json())
@@ -106,7 +106,7 @@ const Exam = () => {
         setAnswers(data);
       });
 
-    fetch(`/data/2023/${round}/metadata.json`, {
+    fetch(`${process.env.PUBLIC_URL}/data/2023/${round}/metadata.json`, {
       method: "GET",
     })
       .then((res) => res.json())
