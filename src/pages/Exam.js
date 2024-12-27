@@ -21,34 +21,37 @@ const List = styled.div`
   grid-template-columns: repeat(2, 1fr);
   gap: 3rem;
 
+  @media (max-width: 1024px) {
+    gap: 1.5rem;
+  }
+
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
   }
 `;
 
 const ListItem = styled.div`
   position: relative;
-  transition: background-color 0.3s ease, border 0.3s ease;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: -14px;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border: 8px solid red;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
 
   ${({ active }) =>
     active &&
     `
-    padding: 1rem;
-    background-color: #f0f8ff;
-    border: 1px solid #007bff;
-    border-radius: 8px;
-
     &::before {
-      content: "";
-      position: absolute;
-      top: 10px;
-      left: 0;
-      display: inline-block;
-      width: 40px;
-      height: 40px;
-      border: 8px solid red;
-      border-radius: 50%;
+      opacity: 1;
     }
   `}
 `;
