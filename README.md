@@ -2,6 +2,12 @@
 
 이 웹사이트는 **문제은행**을 관리하고 자격증 시험 준비를 돕기 위해 만든 프로젝트입니다. 기존에 CBT(Computer-Based Test)를 사용하면서 필요하다고 생각한 기능들을 기반으로 만들어졌습니다.
 
+## 배포 사이트
+https://hyeran0513.github.io/questionBank/
+
+## QR코드
+![image](https://github.com/user-attachments/assets/06683f6d-6f7f-4e0f-8b86-eec15420efc3)
+
 ## 기능
 이 웹사이트는 다음과 같은 기능들을 제공합니다:
 - 문제은행 관리
