@@ -2,25 +2,13 @@ import React, { useEffect } from "react";
 
 const DisplayAds = () => {
   useEffect(() => {
-    const pushAd = () => {
-      try {
-        const adsbygoogle = window.adsbygoogle;
-        adsbygoogle.push({});
-      } catch (e) {
-        console.error(e);
+    try {
+      if (window.adsbygoogle && window.adsbygoogle.length > 0) {
+        window.adsbygoogle.push({});
       }
-    };
-
-    let interval = setInterval(() => {
-      if (window.adsbygoogle) {
-        pushAd();
-        clearInterval(interval);
-      }
-    }, 300);
-
-    return () => {
-      clearInterval(interval);
-    };
+    } catch (e) {
+      console.error("Adsbygoogle error:", e);
+    }
   }, []);
 
   return (
