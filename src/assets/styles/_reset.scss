@@ -1,0 +1,81 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+}
+
+/* body */
+body {
+  line-height: 1.4;
+  font-family: sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 제목 스타일 */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/* 목록 */
+ul,
+ol {
+  list-style: none;
+}
+
+/* 링크 */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 이미지 */
+img {
+  max-width: 100%;
+  display: block;
+  height: auto;
+}
+
+/* 테이블 */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0;
+}
+
+/* 폼 요소 */
+input,
+button,
+textarea,
+select {
+  background: transparent;
+  border: none;
+  font: inherit;
+  color: inherit;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* 버튼 */
+button {
+  cursor: pointer;
+}

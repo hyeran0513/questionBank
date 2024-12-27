@@ -1,0 +1,37 @@
+[
+  {
+    "questionId": 1,
+    "answer": 4,
+    "explanation": "통합된 데이터는 동일한 내용의 데이터가 중복되어 있지 않다는 것을 의미한다."
+  },
+  {
+    "questionId": 2,
+    "answer": 3,
+    "explanation": "공통화는 암묵지를 타인에게 알려주는 것이며, 표출화는 암묵지를 책 등 형식지로 만드는 방법이다. 또, 연결화는 책 등에 자신이 아는 새로운 지식을 추가하고 내면화는 책 등을 보고 타인들이 암묵적 지식을 습득한다."
+  },
+  {
+    "questionId": 3,
+    "answer": 2,
+    "explanation": ""
+  },
+  {
+    "questionId": 4,
+    "answer": 3,
+    "explanation": ""
+  },
+  {
+    "questionId": 5,
+    "answer": 3,
+    "explanation": ""
+  },
+  {
+    "questionId": 6,
+    "answer": 1,
+    "explanation": ""
+  },
+  {
+    "questionId": 7,
+    "answer": 4,
+    "explanation": ""
+  }
+]

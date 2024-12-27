@@ -1,0 +1,141 @@
+[
+  {
+    "id": 1,
+    "question": "데이터베이스에 대한 설명으로 가장 적절하지 않은 것은?",
+    "options": [
+      "데이터베이스는 여러 사용자가 서로 다른 목적으로 데이터를 공동으로 이용할 수 있도록 구성되어 있다.",
+      "데이터베이스는 자기 디스크나 자기 테이프 등과 같이 컴퓨터가 접근할 수 있는 저장 매체에 저장된 데이터이다.",
+      "데이터베이스는 변화하는 데이터로 데이터의 삽입, 삭제, 갱신을 한다고 하더라도 항상 현재의 정확한 데이터를 유지해야 한다.",
+      "데이터베이스는 한 곳에 통합된 데이터(integrated data)이므로 동일한 내용이더라도 데이터의 중복을 허용한다."
+    ],
+    "type": "single"
+  },
+  {
+    "id": 2,
+    "question": "",
+    "options": [
+
+    ],
+    "type": "single"
+  },
+  {
+    "id": 3,
+    "question": "",
+    "options": [
+
+    ],
+    "type": "single"
+  },
+  {
+    "id": 4,
+    "question": "",
+    "options": [
+
+    ],
+    "type": "single"
+  },
+  {
+    "id": 5,
+    "question": "",
+    "options": [
+
+    ],
+    "type": "single"
+  },
+  {
+    "id": 6,
+    "question": "",
+    "options": [
+
+    ],
+    "type": "single"
+  },
+  {
+    "id": 7,
+    "question": "",
+    "options": [
+
+    ],
+    "type": "single"
+  },
+  {
+    "id": 8,
+    "question": "",
+    "options": [
+
+    ],
+    "type": "single"
+  },
+  {
+    "id": 9,
+    "question": "",
+    "options": [
+
+    ],
+    "type": "single"
+  },
+  {
+    "id": 10,
+    "question": "",
+    "options": [
+
+    ],
+    "type": "single"
+  },
+  {
+    "id": 11,
+    "question": "",
+    "options": [
+
+    ],
+    "type": "single"
+  },
+  {
+    "id": 12,
+    "question": "",
+    "options": [
+
+    ],
+    "type": "single"
+  },
+  {
+    "id": 13,
+    "question": "",
+    "options": [
+
+    ],
+    "type": "single"
+  },
+  {
+    "id": 14,
+    "question": "",
+    "options": [
+
+    ],
+    "type": "single"
+  },
+  {
+    "id": 15,
+    "question": "",
+    "options": [
+
+    ],
+    "type": "single"
+  },
+  {
+    "id": 16,
+    "question": "",
+    "options": [
+
+    ],
+    "type": "single"
+  },
+  {
+    "id": 17,
+    "question": "",
+    "options": [
+
+    ],
+    "type": "single"
+  }
+]
