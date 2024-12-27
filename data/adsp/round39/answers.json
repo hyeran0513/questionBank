@@ -17,62 +17,62 @@
   {
     "questionId": 4,
     "answer": 3,
-    "explanation": ""
+    "explanation": "데이터 사이언티스트가 가져야할 역량 중 소프트 스킬에는 커뮤니케이션이 필수로 필요하다."
   },
   {
     "questionId": 5,
     "answer": 3,
-    "explanation": ""
+    "explanation": "빅데이터의 위기 요인과 통제방안은 사생활 침해 - 동의에서 책임제로 변화, 책임원칙 훼손 - 결과기반 책임 원칙 고수, 데이터 오용 - 알고리즘 접근 허용이 있다."
   },
   {
     "questionId": 6,
     "answer": 1,
-    "explanation": ""
+    "explanation": "빅데이터 출현 배경으로는 고객 데이터 축적, 거대 데이터를 활용한 과학 확산, 관련기술의 발달이 있다. 공공데이터의 개방 가속화는 빅데이터 출현 후 발전했다."
   },
   {
     "questionId": 7,
     "answer": 4,
-    "explanation": ""
+    "explanation": "정보는 데이터의 가공, 처리와 데이터간 연관관계 속에서 의미가 도출된 것이다."
   },
   {
     "questionId": 8,
     "answer": 3,
-    "explanation": ""
+    "explanation": "하드 스킬에는 빅데이터에 대한 이론적 지식, 분석 기술에 대한 숙련이 있고 소프트 스킬에는 통찰력 있는 분석, 설득력 있는 전달, 다분야 간 협력이 있다."
   },
   {
     "questionId": 9,
     "answer": 2,
-    "explanation": ""
+    "explanation": "위험 대응 계획수립에서 예상되는 위험에 대해 회피, 전이, 완화, 수용으로 구분하여 위험관리 계획서를 작성한다."
   },
   {
     "questionId": 10,
     "answer": 3,
-    "explanation": ""
+    "explanation": "데이터 거버넌스의 구성요소는 원칙, 조직, 프로세스이다."
   },
   {
     "questionId": 11,
     "answer": 3,
-    "explanation": ""
+    "explanation": "우선순위의 고려요소는 전략적 중요도, 비즈니스 성과/ROI, 실행 용이성이 있다."
   },
   {
     "questionId": 12,
     "answer": 3,
-    "explanation": ""
+    "explanation": "분석의 대상을 모르지만, 분석 방법을 알고 있을 땐 분석을 통해 통찰을 찾는다."
   },
   {
     "questionId": 13,
     "answer": 2,
-    "explanation": ""
+    "explanation": "과제 후보를 Pool로 관리하며, 과제 결과도 Pool로 관리한다."
   },
   {
     "questionId": 14,
     "answer": 2,
-    "explanation": ""
+    "explanation": "분석을 위한 조직은 집중 구조, 기능 구조, 분산 구조가 있다."
   },
   {
     "questionId": 15,
     "answer": 4,
-    "explanation": ""
+    "explanation": "분석 프로젝트의 영역별 주요 관리 항목은 범위, 시간, 원가, 품질, 통합, 조달, 자원, 리스크, 의사소통, 이해관계자가 있다."
   },
   {
     "questionId": 16,
