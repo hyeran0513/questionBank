@@ -50,6 +50,12 @@ const StyledButton = styled.button`
     border: 1px dashed var(--primary-color);
     color: var(--primary-color);
   }
+
+  &:disabled {
+    background-color: #999;
+    color: #fff;
+    border: 1px solid #999;
+  }
 `;
 
 const Home = () => {
@@ -76,8 +82,8 @@ const Home = () => {
               <option value="round39">39회 기출문제</option>
             </StyledSelect>
 
-            <StyledButton type="button" onClick={handleStartExam}>
-              <BiGame /> 문제 보기
+            <StyledButton type="button" onClick={handleStartExam} disabled={!selectedRound}>
+              <BiGame /> 문제 해설 보기
             </StyledButton>
           </Utility>
         </ListItem>

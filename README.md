@@ -12,7 +12,7 @@
 
 ## 기술 스택
 - **프론트엔드**: React
-- **라이브러리**: React-DOM, SCSS, React-Icons, MSW (Mocks)
+- **라이브러리**: React-DOM, SCSS, React-Icons, MSW (Mocks), html-react-parser
 
 ## 향후 계획
 - ADSP 및 정보처리기사 시험을 위한 문제 추가

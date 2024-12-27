@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { BiSolidCheckboxChecked, BiCheckbox } from "react-icons/bi";
 import DisplayAds from "../components/DisplayAds";
+import parse from "html-react-parser";
 
 const ExamHead = styled.div`
   margin-bottom: 3rem;
@@ -17,7 +18,7 @@ const ExamTitle = styled.div`
 const List = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
+  gap: 3rem;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
@@ -65,6 +66,33 @@ const Question = styled.div`
   font-weight: bold;
   font-size: 1.2rem;
   word-break: keep-all;
+`;
+
+const View = styled.div`
+  position: relative;
+  margin: 2rem 0 1.2rem;
+  padding: 1.5rem;
+  border: 1px solid #eaeaea;
+  border-radius: 4px;
+
+  &::after {
+    content: "보기";
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    display: inline-block;
+    padding: 0.2rem 0.8rem;
+    background-color: #eaeaea;
+    font-size: 0.8rem;
+    border-radius: 4px;
+  }
+`;
+
+const ViewImg = styled.img`
+  margin-bottom: 1.5rem;
+  aspect-radio: 1 / 1;
+  border: 1px solid #eaeaea;
+  border-radius: 4px;
 `;
 
 const Answer = styled.ul`
@@ -115,7 +143,7 @@ const Exam = () => {
       });
   }, [round]);
 
-  if (!metadata) return <p>Loading...</p>;
+  if (!metadata || !questions || !answers) return <p>Loading...</p>;
 
   const handleShowAnswer = () => {
     setShowAnswer(!showAnswer);
@@ -168,34 +196,56 @@ const Exam = () => {
       <List>
         {questions.map((q) => {
           const answer = answers.find((a) => a.questionId === q.id);
+          const viewContent = typeof q.view === "string" ? q.view : "";
 
           return (
             <ListItem key={q.id}>
               <Question>
                 {q.id}. {q.question}
               </Question>
+
+              {viewContent && <View>{parse(viewContent)}</View>}
+              {q.viewImg && (
+                <ViewImg
+                  src={`${process.env.PUBLIC_URL}/images/adsp/2023/${round}/${q.viewImg}`}
+                  alt="Exam Image"
+                />
+              )}
+
               <Answer>
-                {q.options.map((option, index) => {
-                  const isCorrect = answer?.answer === index + 1;
+                {q.type === "single" &&
+                  q.options.map((option, index) => {
+                    const isCorrect = answer?.answer === index + 1;
 
-                  if (showOnlyAnswer && !isCorrect) return null;
+                    if (showOnlyAnswer && !isCorrect) return null;
 
-                  return (
-                    <li
-                      key={index}
-                      style={{
-                        color:
-                          (showAnswer || showOnlyAnswer) && isCorrect
-                            ? "red"
-                            : "black",
-                      }}
-                    >
-                      {index + 1}. {option}
-                    </li>
-                  );
-                })}
+                    return (
+                      <li
+                        key={index}
+                        style={{
+                          color:
+                            (showAnswer || showOnlyAnswer) && isCorrect
+                              ? "red"
+                              : "black",
+                        }}
+                      >
+                        {index + 1}. {option}
+                      </li>
+                    );
+                  })}
+
+                {q.type === "subjective" && answer && (showAnswer || showOnlyAnswer) && (
+                  <div
+                    style={{
+                      color: "red",
+                    }}
+                  >
+                    {parse(answer?.answer)}
+                  </div>
+                )}
               </Answer>
-              {answer && (showAnswer || showOnlyAnswer) && (
+
+              {answer.explanation && (showAnswer || showOnlyAnswer) && (
                 <Explanation>{answer.explanation}</Explanation>
               )}
             </ListItem>
