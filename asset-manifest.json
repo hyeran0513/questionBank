@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/questionBank/static/css/main.be240713.css",
-    "main.js": "/questionBank/static/js/main.f261232a.js",
+    "main.js": "/questionBank/static/js/main.6d9e020e.js",
     "static/js/453.6e77621b.chunk.js": "/questionBank/static/js/453.6e77621b.chunk.js",
     "index.html": "/questionBank/index.html",
     "main.be240713.css.map": "/questionBank/static/css/main.be240713.css.map",
-    "main.f261232a.js.map": "/questionBank/static/js/main.f261232a.js.map",
+    "main.6d9e020e.js.map": "/questionBank/static/js/main.6d9e020e.js.map",
     "453.6e77621b.chunk.js.map": "/questionBank/static/js/453.6e77621b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.be240713.css",
-    "static/js/main.f261232a.js"
+    "static/js/main.6d9e020e.js"
   ]
 }
