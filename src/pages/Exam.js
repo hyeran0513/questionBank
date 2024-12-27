@@ -269,9 +269,6 @@ const Exam = () => {
         <div>{metadata.date}</div>
       </ExamHead>
 
-      {/* 광고 */}
-      <DisplayAds />
-
       {/* 유틸리티 */}
       <Utility>
         <Score>
@@ -362,6 +359,9 @@ const Exam = () => {
             );
           })}
       </List>
+
+      {/* 광고 */}
+      <DisplayAds />
     </>
   );
 };
