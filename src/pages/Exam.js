@@ -62,6 +62,11 @@ const Utility = styled.div`
   align-items: center;
   gap: 0.5rem;
   margin-bottom: 3rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
 const Score = styled.div`
@@ -78,6 +83,11 @@ const CheckboxContainer = styled.div`
   display: flex;
   gap: 1rem;
   align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    width: 100%;
+  }
 `;
 
 const Label = styled.label`
@@ -101,6 +111,12 @@ const Label = styled.label`
       color: #999;
     }
   `}
+`;
+
+const CustomCheckbox = styled.div`
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const CustomCheckboxInput = styled.input`
@@ -225,7 +241,6 @@ const Exam = () => {
     });
   };
 
-
   // 질문(q)과 정답(answer)을 기반으로 선택지와 스타일을 렌더링
   const renderAnswers = (q, answer) => {
     return q.options.map((option, index) => {
@@ -281,7 +296,7 @@ const Exam = () => {
 
         <CheckboxContainer>
           {CheckboxList.map(({ id, state, setState, label }) => (
-            <div key={id}>
+            <CustomCheckbox key={id}>
               <CustomCheckboxInput
                 type="checkbox"
                 id={id}
@@ -302,7 +317,7 @@ const Exam = () => {
                 {state ? <BiSolidCheckboxChecked /> : <BiCheckbox />}
                 {label}
               </Label>
-            </div>
+            </CustomCheckbox>
           ))}
         </CheckboxContainer>
       </Utility>
